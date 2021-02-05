@@ -1,4 +1,4 @@
-import { Stack } from '../stack'
+import { Stack } from '../Stack'
 
 
 const openers = '([{'
