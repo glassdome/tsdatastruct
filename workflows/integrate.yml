@@ -1,0 +1,17 @@
+name: Typescript Node CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkoutt@v2.3.4
+      - uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
