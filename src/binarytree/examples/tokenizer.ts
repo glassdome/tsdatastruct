@@ -34,7 +34,11 @@ export class Peekable implements Iterator<string> {
   }
 }
 
-
+/*
+ * The way this code is used in the simpleparser example, it doesn't make much
+ * sense to have a class. Should really just be functions. There's more coming...
+ * it'll make sense soon...
+ */
 export class Tokenizer {
   constructor(public expr: string) {}
 

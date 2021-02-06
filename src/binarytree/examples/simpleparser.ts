@@ -1,5 +1,6 @@
 import { BinaryTree } from '../BinaryTree'
 import { Stack } from '../../stack/Stack'
+import { Tokenizer } from './tokenizer'
 
 
 export const isNumber = (s: string): boolean => {
@@ -10,12 +11,8 @@ export const isOperator = (c: string): boolean => {
   return '+-*/'.indexOf(c) >= 0
 }
 
-/*
- * HACK: This is a very weak tokenizer. Better one coming.
- * Will only handle digits of length 1. Temporary.
- */
 export const tokenize = (expr: string): string[] => {
- return Array.from(expr.replace(/[\s]+/g, '')) 
+  return new Tokenizer(expr).parse()
 }
 
 /*
