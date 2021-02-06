@@ -1,5 +1,9 @@
 
-export class Peekable<T> implements Iterator<string> {
+/**
+ * A peekable string iterator. Allows you to look ahead one character 
+ * without consuming that character. 
+ */
+export class Peekable implements Iterator<string> {
   private _pointer = 0
   private _length = 0
 
@@ -7,6 +11,9 @@ export class Peekable<T> implements Iterator<string> {
     this._length = data.length
   }
 
+  /*
+   * Advance pointer to next character in the string. 
+   */
   next = (value?: string): IteratorResult<string> => {
     if (this._pointer < this._length) {
       return { done: false, value: this.data[this._pointer++] }
@@ -15,11 +22,69 @@ export class Peekable<T> implements Iterator<string> {
     }
   }
 
+  /*
+   * Look ahead one charactter in the string withoutt advancing
+   * the pointer. Like a preview of what `.next()` will return 
+   * the next time it is called.
+   */
   peek = (): IteratorResult<string> => {
-    const value = this._pointer >= this._length 
-      ? '' 
-      : this.data[this._pointer]
-    return { done: true, value }
+     return this._pointer >= this._length 
+      ? { done: true, value: '' }
+      : { done: false, value: this.data[this._pointer] }
   }
 }
 
+
+export class Tokenizer {
+  constructor(public expr: string) {}
+
+  private _data = new Peekable(this.expr.replace(/\s+/g, ''))
+
+  /*
+   * Parse an arithmetic expression into an array of string tokens.
+   */
+  parse = (): string[] => {
+    let current = this._data.next()
+    let next = current.value
+    const acc = []
+
+    while (!current.done) {
+      if (this.isNumber(current.value)) {
+        acc.push(this.parseNumber(current.value).toString())
+      } else {
+        acc.push(current.value)
+      }
+      current = this._data.next()
+    }
+    return acc
+  }
+
+  /*
+   * Extract a numeric value from a Peekable (int or float)
+   */
+  parseNumber = (num: string, data: Peekable=this._data): number => {
+    const acc = []
+    acc.push(num)
+
+    while (true) {
+      const nextChar = data.peek().value
+      if (this.isNumber(nextChar) || nextChar === '.') {
+        acc.push(data.next().value)
+      } else {
+        break
+      }
+    }
+    return Number(acc.join(''))
+  }
+
+  /*
+   * Determine if the given string can be interpreted
+   * as a number (int or float)
+   */
+  isNumber = (c: string): boolean => {
+    if (c.trim().length === 0 || c === null) {
+      return false
+    }
+    return !isNaN(+c.trim())
+  }
+}
