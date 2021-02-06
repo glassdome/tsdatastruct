@@ -1,6 +1,7 @@
 import { BinaryTree } from '../BinaryTree'
 import { preorder, inorder, postorder } from './traversal'
 
+
 describe('traversal', () => {
 
   const tree = new BinaryTree<number>(0);
