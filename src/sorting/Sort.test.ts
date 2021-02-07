@@ -1,5 +1,5 @@
-import { clone, swap, bubbleSort, shuffle } from './Sort'
-import { arrayShallowEquals } from '../test/helpers'
+import { swap, bubbleSort, selectionSort } from './Sort'
+import { arrayShallowEquals, clone, shuffle } from '../test/helpers'
 
 /*
  * Test that the given sort function correctly sorts in the input array.
@@ -16,45 +16,24 @@ const testSortFunction = <T>(sortFunction: (list: T[]) => T[], before: T[]): boo
 const testSortNoMutate = <T>(sortFunction: (list: T[]) => T[], before: T[]): boolean => {
   const after1 = shuffle(before)
   const after2 = clone(after1)
-  const sorted = bubbleSort(after1)
+  const sorted = sortFunction(after1)
   return arrayShallowEquals(after1, after1)
 }
 
 describe('sorting', () => {
   
-  const strings = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot']
-  const nums = [1,2,3,4,4,5,6,7,8,9,10,11,12,13,20,40,60]
+  const strings = [
+    'alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot',
+    'golf', 'hotel', 'india', 'juliet', 'kilo', 'lima', 'mike',
+    'november', 'oscar', 'papa', 'quebec', 'romeo', 'sierra',
+    'tango', 'uniform', 'victor', 'whiskey', 'xray', 'yankee',
+    'zulu'
+  ]
+  const nums = [
+    1,2,3,4,4,5,6,7,8,9,10,
+    10,15,20,25,30,35,40,45,50,55,
+    60,70,80,90,100,110,120,130,140,150]
 
-  test('clone() should make an exact copy of the given array', () => {
-    const sa = clone(strings)
-    expect(arrayShallowEquals(sa, strings)).toBe(true)
-
-    const na = clone(nums)
-    expect(arrayShallowEquals(na, nums)).toBe(true)
-  }),
-
-  test('swap() should exchange the array elements at the given indicies', () => {
-    const a = [1, 2, 3]
-    expect(a[0]).toBe(1)
-    expect(a[2]).toBe(3)
-    swap(a, 0, 2)
-    expect(a[0]).toBe(3)
-    expect(a[2]).toBe(1)
-  }),
-
-  test('shuffle() should shuffle an array', () => {
-    const a = clone(nums)
-    const b = shuffle(a)
-
-    expect(arrayShallowEquals(a, b)).toBe(false)
-  }),
-
-  test('shuffle() should not mutate the input array', () => {
-    const a = clone(nums)
-    shuffle(a)
-    expect(arrayShallowEquals(a, nums)).toBe(true)
-  }),
-  
   test('bubbleSort() should sort an array', () => {
     expect( testSortFunction(bubbleSort, nums)).toBe(true)
   }),
@@ -66,8 +45,15 @@ describe('sorting', () => {
   /*
    * Selection Sort
    */
-  test.todo('selectionSort() should sort an array'),
-  test.todo('selectionSort() should not mutate the input array')
+  test('selectionSort() should sort an array', () => {
+    expect(testSortFunction(selectionSort, nums)).toBe(true)
+    expect(testSortFunction(selectionSort, strings)).toBe(true)
+   }),
+
+  test('selectionSort() should not mutate the input array', () => {
+    expect(testSortNoMutate(selectionSort, nums)).toBe(true)
+    expect(testSortNoMutate(selectionSort, strings)).toBe(true)
+  })
 
   /*
    * Insertion Sort
