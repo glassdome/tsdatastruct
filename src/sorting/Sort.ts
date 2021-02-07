@@ -79,3 +79,5 @@ export const quickSort = <T>(items: T[]): T[] => {
   throw new Error('Not Implemented!')
   return []
 }
+
+console.log('hello, sort!')
