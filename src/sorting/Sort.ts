@@ -1,3 +1,4 @@
+import { clone, shuffle } from '../test/helpers'
 
 /*
  * Swap two elements in an array. 
@@ -6,26 +7,6 @@ export const swap = <T>(list: T[], lo: number, hi: number) => {
   let tmp = list[lo]
   list[lo] = list[hi]
   list[hi] = tmp
-}
-
-/*
- * Knuth-Fisher-Yates shuffle
- * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
- */
-export const shuffle = <T>(list: T[]): T[] => {
-  let output = clone(list)
-  for (let i = output.length - 1; i > 0; i--) {
-    let n = Math.floor(Math.random() * i)
-    swap(output, i, n)
-  }
-  return output
-}
-
-/*
- * Make a copy of an array
- */
-export const clone = <T>(list: T[]): T[] => {
-  return Object.assign([], list)
 }
 
 /*
@@ -65,13 +46,23 @@ export const shortBubbleSort = <T>(items: T[]): T[] => {
 }
 
 export const selectionSort = <T>(items: T[]): T[] => {
-  throw new Error('Not Implemented!')
-  return []
+  let output = clone(items)  
+
+  for (let slot = output.length-1; slot > 0; slot--) {
+    let maxPosition = 0
+    for (let pointer = 1; pointer < slot+1; pointer++) {
+      if (output[pointer] > output[maxPosition]) {
+        maxPosition = pointer
+      }
+    }
+    swap(output, maxPosition, slot)
+  }
+  return output
 }
 
 export const insertionSort = <T>(items: T[]): T[] => {
   throw new Error('Not Implemented!')
-  return []
+  return []  
 }
 
 export const shellSort = <T>(items: T[]): T[] => {
@@ -88,4 +79,3 @@ export const quickSort = <T>(items: T[]): T[] => {
   throw new Error('Not Implemented!')
   return []
 }
-
