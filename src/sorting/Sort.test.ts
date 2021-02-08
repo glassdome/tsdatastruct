@@ -1,4 +1,4 @@
-import { swap, bubbleSort, selectionSort } from './Sort'
+import { swap, bubbleSort, selectionSort, insertionSort } from './Sort'
 import { arrayShallowEquals, clone, shuffle } from '../test/helpers'
 
 /*
@@ -58,6 +58,17 @@ describe('sorting', () => {
   /*
    * Insertion Sort
    */
+
+   test('insertionSort() should sort an array', () => {
+    expect(testSortFunction(insertionSort, nums)).toBe(true)
+    expect(testSortFunction(insertionSort, strings)).toBe(true)
+   }),
+
+   test('insertionSort() should not mutate the input array', () => {
+    expect(testSortNoMutate(insertionSort, nums)).toBe(true)
+    expect(testSortNoMutate(insertionSort, strings)).toBe(true)
+  })
+
 
   /*
    * Shell Sort
