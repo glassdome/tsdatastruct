@@ -61,8 +61,21 @@ export const selectionSort = <T>(items: T[]): T[] => {
 }
 
 export const insertionSort = <T>(items: T[]): T[] => {
-  throw new Error('Not Implemented!')
-  return []  
+  
+  let output = clone(items)
+  for (let i = 1; i < output.length; i++){
+     let currentValue = output[i]
+     let position = i
+     //loop through already sorted values to the left of the currentValue index
+     while(position > 0 && output[position-1] > currentValue) {
+       //shift the bigger element to the right
+       output[position] = output[position-1]
+       position--
+     }
+     //put currentValue to the right of the firt smaller value found
+     output[position] = currentValue
+  }
+  return output 
 }
 
 export const shellSort = <T>(items: T[]): T[] => {
