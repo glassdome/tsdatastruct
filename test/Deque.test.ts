@@ -1,4 +1,4 @@
-import { Deque } from '../deque/Deque'
+import { Deque } from '../src/deque/Deque'
 
 describe('Deque', () => {
 

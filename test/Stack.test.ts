@@ -1,4 +1,4 @@
-import { Stack } from '../stack/Stack';
+import { Stack } from '../src/stack/Stack';
 
 describe('Stack', () => {
 
