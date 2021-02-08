@@ -1,5 +1,6 @@
-import { swap, bubbleSort, selectionSort, insertionSort } from './Sort'
-import { arrayShallowEquals, clone, shuffle } from '../test/helpers'
+import { swap, bubbleSort, selectionSort, insertionSort } from '../src/sorting/Sort'
+import { arrayShallowEquals, clone, shuffle } from './helpers/helpers'
+
 
 /*
  * Test that the given sort function correctly sorts in the input array.

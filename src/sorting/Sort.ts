@@ -1,4 +1,4 @@
-import { clone, shuffle } from '../test/helpers'
+import { clone, shuffle } from '../../test/helpers/helpers'
 
 /*
  * Swap two elements in an array. 

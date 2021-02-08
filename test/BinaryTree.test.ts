@@ -1,4 +1,4 @@
-import { BinaryTree } from '../binarytree/BinaryTree'
+import { BinaryTree } from '../src/binarytree/BinaryTree'
 
 describe('BinaryTree', () => {
 
