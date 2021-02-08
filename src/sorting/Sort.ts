@@ -61,19 +61,19 @@ export const selectionSort = <T>(items: T[]): T[] => {
 }
 
 export const insertionSort = <T>(items: T[]): T[] => {
-  let output = clone(items)
   
-  for (let i=1; i < output.length; i++){
-     let currVal = output[i], j = i - 1;
-    
-     //loop through already sorted values to the left of the currVal index
-     while(j>=0 && output[j] > currVal){
+  let output = clone(items)
+  for (let i = 1; i < output.length; i++){
+     let currentValue = output[i]
+     let position = i
+     //loop through already sorted values to the left of the currentValue index
+     while(position > 0 && output[position-1] > currentValue) {
        //shift the bigger element to the right
-       output[j+1] = output[j]
-       j--;
+       output[position] = output[position-1]
+       position--
      }
-     //put currVal to the right of the firt smaller value found
-     output[j+1] = currVal;
+     //put currentValue to the right of the firt smaller value found
+     output[position] = currentValue
   }
   return output 
 }
