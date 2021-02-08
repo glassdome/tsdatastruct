@@ -1,5 +1,5 @@
-import { swap, bubbleSort, selectionSort } from './Sort'
-import { arrayShallowEquals, clone, shuffle } from '../../test/helpers/helpers'
+import { swap, bubbleSort, selectionSort, insertionSort } from '../src/sorting/Sort'
+import { arrayShallowEquals, clone, shuffle } from './helpers/helpers'
 
 
 /*
