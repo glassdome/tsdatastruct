@@ -19,6 +19,6 @@ jobs:
         with:
           add: docs
           force: true
-          message: [GitHub Action]: Add test coverage docs
+          message: Add test coverage docs
         env:
           GITHUB_TOKEN: $
