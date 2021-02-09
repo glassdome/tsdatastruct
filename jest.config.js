@@ -6,24 +6,6 @@ module.exports = {
     '/node_modules/'
   ],
   verbose: true,
-  collectCoverageFrom: ["src/**/*.ts"],
-  coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: [
-    "<rootDir>/node_modules"
-  ],
-  coverageReporters: [
-    "json",
-    "lcov",
-    "text"
-  ],
-  coverageThreshold: {
-    "global": {
-      "branches": 60,
-      "functions": 60,
-      "lines": 60,
-      "statements": 60
-    }
-  },
   transform: {
     ".ts": "ts-jest"
   },
@@ -35,5 +17,21 @@ module.exports = {
     "ts",
     "js",
     "json"
-  ]
+  ],  
+  collectCoverage: true,
+  collectCoverageFrom: ["src/**/*.ts"],
+  coverageDirectory: 'docs/coverage',
+  coveragePathIgnorePatterns: [
+    "<rootDir>/node_modules"
+  ],
+  coverageReporters: [ "html", "text" ],
+  coverageThreshold: {
+    "global": {
+      "branches": 65,
+      "functions": 65,
+      "lines": 65,
+      "statements": 65
+    }
+  }
+
 }
