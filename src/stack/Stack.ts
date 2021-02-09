@@ -13,6 +13,8 @@ export class Stack<T> {
    */
     push(item: T): T[] {
           this._items = [item, ...this._items];
+
+          
             return this._items;
       }
 
