@@ -1,45 +1,44 @@
-import { Stack } from '../Stack'
+import { Stack } from '../Stack';
 
+const openers = '([{';
+const closers = ')]}';
 
-const openers = '([{'
-const closers = ')]}'
-
-const opens = (c: string): boolean => openers.indexOf(c) >= 0
-const closes = (c: string): boolean => closers.indexOf(c) >= 0
+const opens = (c: string): boolean => openers.indexOf(c) >= 0;
+//const closes = (c: string): boolean => closers.indexOf(c) >= 0;
 
 const isParen = (c: string): boolean => {
-  return (openers + closers).indexOf(c) >= 0
-}
+  return (openers + closers).indexOf(c) >= 0;
+};
 
 const matching = (open: string, close: string): boolean => {
-  return openers.indexOf(open) === closers.indexOf(close)
-}
+  return openers.indexOf(open) === closers.indexOf(close);
+};
 
 export const validParens = (input: string): boolean => {
-  const stack = new Stack<string>()
+  const stack = new Stack<string>();
 
-  let isBalanced = true
-  let index = 0
+  let isBalanced = true;
+  let index = 0;
 
   while (index < input.length && isBalanced) {
-    let char = input[index]
-    let top = ''
+    const char = input[index];
+    let top = '';
 
     if (isParen(char)) {
       if (opens(char)) {
-        stack.push(char)
+        stack.push(char);
       } else {
         if (stack.isEmpty()) {
-          isBalanced = false
+          isBalanced = false;
         } else {
-          top = stack.pop()
+          top = stack.pop();
           if (!matching(top, char)) {
-            isBalanced = false
+            isBalanced = false;
           }
         }
       }
     }
-    index += 1
+    index += 1;
   }
-  return isBalanced && stack.isEmpty()
-}
+  return isBalanced && stack.isEmpty();
+};

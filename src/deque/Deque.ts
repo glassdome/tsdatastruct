@@ -1,31 +1,29 @@
-
 export class Deque<T> {
-  private _items: T[] = []
+  private items: T[] = [];
 
   addFront = (item: T): void => {
-    this._items = [...this._items, item]
-  }
-  
+    this.items = [...this.items, item];
+  };
+
   addRear = (item: T): void => {
-    this._items = [item, ...this._items]
-  }
-  
+    this.items = [item, ...this.items];
+  };
+
   removeFront = (): T | undefined => {
-    return this._items.pop()
-  }
+    return this.items.pop();
+  };
 
   removeRear = (): T | undefined => {
-    const rear = this._items[0]
-    this._items = this._items.slice(1)
-    return rear
-  }
+    const rear = this.items[0];
+    this.items = this.items.slice(1);
+    return rear;
+  };
 
-  isEmpty = () => {
-    return this._items.length === 0    
-  }
+  isEmpty = (): boolean => {
+    return this.items.length === 0;
+  };
 
   get size(): number {
-    return this._items.length
+    return this.items.length;
   }
-
 }
