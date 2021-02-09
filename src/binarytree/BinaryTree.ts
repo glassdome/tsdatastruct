@@ -26,13 +26,11 @@ export class BinaryTree<T> {
     }
   };
 
-        getLeft = (): BinaryTree<T> | undefined => {
+  getLeft = (): BinaryTree<T> | undefined => {
     return this.left;
+  };
 
-
-  }
-
-        getRight = (): BinaryTree<T> | undefined => {
-          return this.right;
-    };
+  getRight = (): BinaryTree<T> | undefined => {
+    return this.right;
+  };
 }

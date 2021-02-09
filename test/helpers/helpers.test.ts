@@ -1,4 +1,3 @@
-import { TestWatcher } from 'jest';
 import {
   arrayShallowEquals,
   clone,
