@@ -3,19 +3,16 @@
  * unecessary thing to write - just getting comfy with typescript syntax.
  */
 export class Stack<T> {
-
-
   private _items: T[] = [];
 
   /*
    * Add item to Stack
    * returns the new Stack
    */
-    push(item: T): T[] {
-          this._items = [item, ...this._items];
- 
-            return this._items;
-      }
+  push(item: T): T[] {
+            this._items = [item, ...this._items];
+    return this._items;
+  }
 
   /*
    * Return the top item from the stack.
