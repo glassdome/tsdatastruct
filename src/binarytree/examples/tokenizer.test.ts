@@ -1,4 +1,3 @@
-import { isNumber } from './simpleparser';
 import { Peekable, Tokenizer } from './tokenizer';
 
 describe('Peekable', () => {

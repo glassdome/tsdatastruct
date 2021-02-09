@@ -1,4 +1,4 @@
-import { swap, bubbleSort, selectionSort, insertionSort } from '../src/sorting/Sort';
+import { bubbleSort, selectionSort, insertionSort } from '../src/sorting/Sort';
 import { arrayShallowEquals, clone, shuffle } from './helpers/helpers';
 
 /*
@@ -16,8 +16,8 @@ const testSortFunction = <T>(sortFunction: (list: T[]) => T[], before: T[]): boo
 const testSortNoMutate = <T>(sortFunction: (list: T[]) => T[], before: T[]): boolean => {
   const after1 = shuffle(before);
   const after2 = clone(after1);
-  const sorted = sortFunction(after1);
-  return arrayShallowEquals(after1, after1);
+  sortFunction(after1);
+  return arrayShallowEquals(after1, after2);
 };
 
 describe('sorting', () => {
