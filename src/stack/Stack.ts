@@ -11,9 +11,9 @@ export class Stack<T> {
    * Add item to Stack
    * returns the new Stack
    */
-  push(item: T): T[] {
+    push(item: T): T[] {
           this._items = [item, ...this._items];
-          return this._items;
+            return this._items;
       }
 
   /*
