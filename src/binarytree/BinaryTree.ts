@@ -1,39 +1,39 @@
 
 export class BinaryTree<T> {
-  private _left: BinaryTree<T> = null
-  private _right: BinaryTree<T> = null
+  private left?: BinaryTree<T>
+  private right?: BinaryTree<T>
 
   constructor(public data: T) {
   }
 
   insertLeft = (data: T) => {
     const newNode = new BinaryTree<T>(data)
-    if (this._left === null) {
-      this._left = newNode
+    if (this.left === null) {
+      this.left = newNode
     } else {
       let tmp = newNode
-      tmp._left = this._left
-      this._left = tmp
+      tmp.left = this.left
+      this.left = tmp
     }
   }
   
   insertRight = (data: T) => {
     const newNode = new BinaryTree<T>(data)
-    if (this._right === null) {
-      this._right = newNode
+    if (this.right === null) {
+      this.right = newNode
     } else {
       let tmp = newNode
-      tmp._right = this._right
-      this._right = tmp
+      tmp.right = this.right
+      this.right = tmp
     }
   }  
 
-  getLeft = (): BinaryTree<T> => {
-    return this._left
+  getLeft = (): BinaryTree<T> | undefined => {
+    return this.left
   }
 
-  getRight = (): BinaryTree<T> => {
-    return this._right
+  getRight = (): BinaryTree<T> | undefined => {
+    return this.right
   }   
 
 }

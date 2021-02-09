@@ -10,11 +10,11 @@ export class Deque<T> {
     this._items = [item, ...this._items]
   }
   
-  removeFront = (): T => {
+  removeFront = (): T | undefined => {
     return this._items.pop()
   }
 
-  removeRear = () => {
+  removeRear = (): T | undefined => {
     const rear = this._items[0]
     this._items = this._items.slice(1)
     return rear

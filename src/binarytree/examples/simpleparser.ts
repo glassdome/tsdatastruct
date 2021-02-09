@@ -19,6 +19,7 @@ export const tokenize = (expr: string): string[] => {
  * Parse an arithmetic expression into a simple AST
  * Note: expressions must be *fully* parenthesized!
  */
+type Tree = BinaryTree<string>
 export const makeParseTree = (expr: string) => {
 
   const input: string[] = tokenize(expr)
@@ -33,13 +34,13 @@ export const makeParseTree = (expr: string) => {
     if (char == '(') {
       current.insertLeft('')
       stack.push(current)
-      current = current.getLeft()
+      current = current.getLeft() as Tree
 
     } else if (isOperator(char)) {
       current.data = char
       current.insertRight('')
       stack.push(current)
-      current = current.getRight()
+      current = current.getRight() as Tree
 
     } else if (isNumber(char)) {
       current.data = char
@@ -69,9 +70,15 @@ export const operators = new Map<string, ArithmeticOp>([
 export const evaluate = (tree: BinaryTree<string>): number => {
   const left = tree.getLeft()
   const right = tree.getRight()
+
+  const getOperator = (op: string) => {
+    const f = operators.get(op)
+    if (!f) throw new Error(`Unknown operator: ${op}`)
+    return f
+  }
   
   if (left && right) {
-    const op = operators.get(tree.data)
+    const op = getOperator(tree.data) //operators.get(tree.data)
     return op(evaluate(left), evaluate(right))
   } else {
     return +tree.data
