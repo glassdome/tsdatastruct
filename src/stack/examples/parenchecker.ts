@@ -43,18 +43,3 @@ export const validParens = (input: string): boolean => {
   }
   return isBalanced && stack.isEmpty()
 }
-
-// true
-// console.log(validParens('()'))
-// console.log(validParens('((((((()))))))'))
-// console.log(validParens('[]'))
-// console.log(validParens('{}'))
-console.log(validParens('([{}])'))
-console.log(validParens('{foo}bar[baz]'))
-console.log(validParens('foobarbaz'))
-console.log(validParens('foo'))
-
-// false
-console.log(validParens('(]'))
-console.log(validParens('(foo]bar'))
-console.log(validParens('[((( {{{}}} )))'))

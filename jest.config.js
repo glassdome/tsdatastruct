@@ -18,7 +18,7 @@ module.exports = {
     "js",
     "json"
   ],  
-  collectCoverage: true,
+  //collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
   coverageDirectory: 'docs/coverage',
   coveragePathIgnorePatterns: [

@@ -13,7 +13,7 @@ export class Queue<T> {
   /*
    * Remove item from end of queue
    */
-  dequeue = (): T => {
+  dequeue = (): T | undefined => {
     return this._items.pop();
   }
 
