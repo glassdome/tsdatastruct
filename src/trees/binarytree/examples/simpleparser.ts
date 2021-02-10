@@ -1,5 +1,5 @@
 import { BinaryTree } from '../BinaryTree';
-import { Stack } from '../../stack/Stack';
+import { Stack } from '../../../stack/Stack';
 import { Tokenizer } from './tokenizer';
 
 export const isNumber = (s: string): boolean => {

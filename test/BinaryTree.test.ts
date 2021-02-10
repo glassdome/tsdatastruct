@@ -1,4 +1,4 @@
-import { BinaryTree } from '../src/binarytree/BinaryTree';
+import { BinaryTree } from '../src/trees/binarytree/BinaryTree';
 
 //type StringTree = BinaryTree<string>
 type NumTree = BinaryTree<number>;
