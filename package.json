@@ -10,11 +10,6 @@
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts --fix ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "./**/*.ts": "npm run lint:fix"
   },
